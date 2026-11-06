@@ -41,6 +41,10 @@ Geometries and Na+ binding: PBE0-D3(BJ)/def2-SVP. ESPmin and volume: M06-2X/def2
 
 See the Limitations section of the manuscript. In particular, the ESPmin window used to define the candidate set was set after the results were known, and the dipole moment is an unvalidated polarity proxy.
 
+## License
+
+MIT (see `LICENSE`).
+
 ## Citation
 
 Please cite the manuscript and the archived release of this repository (DOI to be added after the Zenodo release).
