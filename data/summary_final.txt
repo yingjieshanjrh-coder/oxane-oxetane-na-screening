@@ -1,0 +1,39 @@
+ring-strain constraint: RSE > 15 kcal/mol removes 23 molecules (oxetane); 111 remain
+  strained RSE range 24.0..28.4; retained RSE range -2.1..6.0 kcal/mol
+parent oxane M0027: ESPmin -37.20  dipole 1.38  PA 205.3
+
+chelation diagnostic (n=40 with an F-free reference):
+  Pearson(F-free binding, ESPmin)   = 0.97
+  Pearson(global binding, ESPmin)   = 0.26
+  Pearson(global, F-free binding)   = 0.22
+
+ESPmin by number of F atoms (retained molecules):
+            mean  count
+n_F_atoms              
+0         -37.25      4
+1         -31.53     13
+2         -29.27     29
+3         -27.87     29
+4         -26.47     22
+5         -24.09     14
+
+main front (ESPmin, dipole, proton affinity): 5 of 111 molecules
+   id              ring_smiles  n_F_atoms  ESPmin_kcal_mol  dipole_debye  proton_affinity_kcal_mol  Ebind_global_kcal_mol  RSE_release_kcal_mol
+M0106    C1C(F)CC(F)C(C(F)F)O1          4           -20.73          1.06                    187.63                 -52.51                  6.04
+M0125 C1C(F)C(C(F)(F)F)C(F)CO1          5           -21.81          2.30                    181.26                 -37.34                  1.28
+M0130 C1CC(F)(F)C(C(F)(F)F)CO1          5           -22.47          2.68                    187.39                 -27.73                 -0.15
+M0102    C1C(C(F)F)CC(F)(F)CO1          4           -23.14          2.77                    187.60                 -41.70                  2.67
+M0120    C1CCC(F)C(C(F)(F)F)O1          4           -28.37          3.83                    190.23                 -37.09                  2.82
+
+better than the parent oxane by margins (ESPmin +4 kcal/mol, dipole +0.3 D, lower proton affinity): 48 of 111
+  number of F atoms among them: {1: 5, 2: 12, 3: 11, 4: 12, 5: 8}
+
+sensitivity of the main front (Jaccard overlap with the main front):
+  desolvation = global binding energy (chelation included) size  11 overlap   4 jaccard 0.33
+  polarity = dipole per volume                            size   6 overlap   5 jaccard 0.83
+  RSE added as a third objective                          size  16 overlap   5 jaccard 0.31
+  ESPmin only (no polarity objective)                     size   2 overlap   2 jaccard 0.40
+members that stay on the front in EVERY variant: ['M0125']
+
+correlation between objectives (retained molecules): Pearson(ESPmin, dipole) = -0.13
+  Pearson(ESPmin, proton affinity) = -0.90   Pearson(dipole, proton affinity) = -0.06

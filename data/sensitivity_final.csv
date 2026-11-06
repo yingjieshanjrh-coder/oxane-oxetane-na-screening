@@ -1,0 +1,5 @@
+variant,size,overlap,jaccard
+desolvation = global binding energy (chelation included),11,4,0.33
+polarity = dipole per volume,6,5,0.83
+RSE added as a third objective,16,5,0.31
+ESPmin only (no polarity objective),2,2,0.4
