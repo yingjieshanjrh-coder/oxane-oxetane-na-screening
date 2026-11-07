@@ -53,9 +53,9 @@ def fig1(df, out):
         ax.scatter(i + rng.uniform(-.18, .18, len(s)), s.RSE_release_kcal_mol, c=c, marker=m,
                    s=14, alpha=.8, edgecolor="white", linewidth=.3, label=f"{sc} (n={len(s)})")
     ax.axhline(15, color=GREY, lw=.7, ls="--")
-    ax.text(1.45, 15.8, "filter: RSE > 15", ha="right", color=GREY, fontsize=7)
+    ax.text(1.45, 15.8, "RSE = 15 kcal mol$^{-1}$", ha="right", color=GREY, fontsize=7)
     ax.set_xticks([0, 1]); ax.set_xticklabels(["oxetane", "oxane"]); ax.set_xlim(-.5, 1.5)
-    ax.set_ylabel("Ring-strain release (kcal/mol)")
+    ax.set_ylabel("Ring-strain release / kcal mol$^{-1}$")
     ax.legend(frameon=False, loc="center", bbox_to_anchor=(0.5, 0.42))
     save(fig, out, "fig3_ring_strain")
 
@@ -63,8 +63,8 @@ def fig1(df, out):
 def fig2(df, out):
     o = df[df.scaffold == "oxane"]
     fig, axs = plt.subplots(1, 2, figsize=(6.8, 2.6))
-    for ax, col, lab in [(axs[0], "ESPmin_kcal_mol", "ESP$_{min}$ (kcal/mol)"),
-                         (axs[1], "Ebind_global_kcal_mol", "Global Na$^+$ binding (kcal/mol)")]:
+    for ax, col, lab in [(axs[0], "ESPmin_kcal_mol", "ESP$_{min}$ / kcal mol$^{-1}$"),
+                         (axs[1], "Ebind_global_kcal_mol", "Global Na$^+$ binding energy / kcal mol$^{-1}$")]:
         g = [o[o.n_F_atoms == k][col].values for k in range(6)]
         ax.boxplot(g, positions=range(6), widths=.55, showfliers=False,
                    medianprops=dict(color=BLUE), boxprops=dict(color=GREY), whiskerprops=dict(color=GREY),
@@ -73,8 +73,8 @@ def fig2(df, out):
             ax.scatter(np.full(len(v), k) + np.random.default_rng(k).uniform(-.15, .15, len(v)), v,
                        s=6, c=BLUE, alpha=.45, linewidth=0)
         ax.set_xlabel("Number of F atoms"); ax.set_ylabel(lab)
-    axs[0].set_title("a  ESP$_{min}$ rises monotonically with F", loc="left")
-    axs[1].set_title("b  Global binding: non-monotonic (chelation)", loc="left")
+    axs[0].set_title("(a)", loc="left")
+    axs[1].set_title("(b)", loc="left")
     fig.tight_layout()
     save(fig, out, "fig1_F_dependence")
 
@@ -83,15 +83,15 @@ def fig3(df, out):
     d = df.dropna(subset=["Ebind_noF_kcal_mol"])
     d = d[d.Ebind_noF_kcal_mol.notna()]
     fig, axs = plt.subplots(1, 2, figsize=(6.8, 2.8))
-    for ax, col, c, mk, ttl in [(axs[0], "Ebind_noF_kcal_mol", BLUE, "o", "a  F-free (constrained) binding"),
-                                (axs[1], "Ebind_global_kcal_mol", ORANGE, "s", "b  Global binding (chelation included)")]:
+    for ax, col, c, mk, ttl in [(axs[0], "Ebind_noF_kcal_mol", BLUE, "o", "(a)"),
+                                (axs[1], "Ebind_global_kcal_mol", ORANGE, "s", "(b)")]:
         ax.scatter(d.ESPmin_kcal_mol, d[col], c=c, marker=mk, s=14, alpha=.85, edgecolor="white", linewidth=.3)
         r = np.corrcoef(d.ESPmin_kcal_mol, d[col])[0, 1]
         k = np.polyfit(d.ESPmin_kcal_mol, d[col], 1)
         xs = np.linspace(d.ESPmin_kcal_mol.min(), d.ESPmin_kcal_mol.max(), 2)
         ax.plot(xs, np.polyval(k, xs), color=GREY, lw=.8)
         ax.text(.04, .94, f"r = {r:.2f}  (n = {len(d)})", transform=ax.transAxes, va="top")
-        ax.set_xlabel("ESP$_{min}$ (kcal/mol)"); ax.set_ylabel("Na$^+$ binding energy (kcal/mol)")
+        ax.set_xlabel("ESP$_{min}$ / kcal mol$^{-1}$"); ax.set_ylabel("Na$^+$ binding energy / kcal mol$^{-1}$")
         ax.set_title(ttl, loc="left")
     fig.tight_layout()
     save(fig, out, "fig2_chelation_diagnostic")
@@ -114,11 +114,11 @@ def fig4(df, out):
     for _, r in pd.concat([f, w]).drop_duplicates("id").iterrows():
         ax.annotate(r.id[1:], (r.ESPmin_kcal_mol, r.dipole_debye), xytext=(3, 3), textcoords="offset points",
                     fontsize=6)
-    ax.set_xlabel("ESP$_{min}$ (kcal/mol)"); ax.set_ylabel("Dipole moment (D)")
-    cb = fig.colorbar(sc, ax=ax, pad=.02); cb.set_label("Proton affinity (kcal/mol)", fontsize=7)
+    ax.set_xlabel("ESP$_{min}$ / kcal mol$^{-1}$"); ax.set_ylabel("Dipole moment / D")
+    cb = fig.colorbar(sc, ax=ax, pad=.02); cb.set_label("Proton affinity / kcal mol$^{-1}$", fontsize=7)
     ax.set_xlim(-38.5, -19.0)
     ax.text(np.mean(WINDOW), 3.6, "ESP$_{min}$\nwindow", ha="center", va="top", fontsize=6.5, color=GREEN)
-    ax.legend(frameon=False, loc="lower left", fontsize=6.5)
+    ax.legend(frameon=False, loc="lower center", bbox_to_anchor=(0.5, 1.0), ncol=3, fontsize=6.5, handletextpad=0.3, columnspacing=0.8)
     save(fig, out, "fig4_window_and_fronts")
 
 
@@ -133,15 +133,15 @@ def fig5(df, out):
         ax.text(i - w / 2, v[1] + .3, f"{v[1]:.1f}", ha="center", fontsize=6.5)
         ax.text(i + w / 2, v[0] + .3, f"{v[0]:.1f}", ha="center", fontsize=6.5)
     ax.set_xticks(x); ax.set_xticklabels(list(NIST)); ax.set_ylim(185, 216)
-    ax.set_ylabel("Proton affinity (kcal/mol)"); ax.legend(frameon=False, loc="upper left", ncol=2, columnspacing=1)
-    ax.set_title("a  Validation (offset $\\approx$ +8, rank kept)", loc="left")
+    ax.set_ylabel("Proton affinity / kcal mol$^{-1}$"); ax.legend(frameon=False, loc="upper left", ncol=2, columnspacing=1)
+    ax.set_title("(a)", loc="left")
     ax = axs[1]
     ax.scatter(o.ESPmin_kcal_mol, o.proton_affinity_kcal_mol, s=12, c=BLUE, alpha=.8, edgecolor="white",
                linewidth=.3)
     r = np.corrcoef(o.ESPmin_kcal_mol, o.proton_affinity_kcal_mol)[0, 1]
     ax.text(.04, .06, f"r = {r:.2f}  (n = {len(o)})", transform=ax.transAxes)
-    ax.set_xlabel("ESP$_{min}$ (kcal/mol)"); ax.set_ylabel("Proton affinity (kcal/mol)")
-    ax.set_title("b  Basicity tracks ESP$_{min}$", loc="left")
+    ax.set_xlabel("ESP$_{min}$ / kcal mol$^{-1}$"); ax.set_ylabel("Proton affinity / kcal mol$^{-1}$")
+    ax.set_title("(b)", loc="left")
     fig.tight_layout()
     save(fig, out, "fig5_PA_validation")
 
