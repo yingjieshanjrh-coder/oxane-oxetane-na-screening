@@ -1,0 +1,15 @@
+{
+  "title": "Code and data for the computational screening of fluorinated oxetane and oxane solvents for sodium electrolytes",
+  "upload_type": "software",
+  "description": "Scripts, result tables and figures for the DFT-based screening of 134 methylated and fluorinated oxetanes and oxanes (tetrahydropyrans) as solvents for low-temperature sodium electrolytes: Na+ binding energies, electrostatic-potential descriptors, ring-strain release energies, dipole moments, proton affinities, frontier-orbital energies and Pareto analysis.",
+  "creators": [
+    {
+      "name": "Shan, Yingjie",
+      "affiliation": "School of Chemistry, University of St Andrews",
+      "orcid": "0009-0007-6218-1248"
+    }
+  ],
+  "license": "MIT",
+  "keywords": ["sodium metal battery", "low-temperature electrolyte", "weakly solvating electrolyte", "cyclic ether", "density functional theory"],
+  "access_right": "open"
+}
