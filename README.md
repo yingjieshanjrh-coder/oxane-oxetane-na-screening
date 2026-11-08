@@ -1,5 +1,7 @@
 # Descriptor-based screening of fluorinated oxetane and oxane (tetrahydropyran) solvents for sodium electrolytes
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24047648.svg)](https://doi.org/10.5281/zenodo.24047648)
+
 Code and data for the manuscript *Descriptor-Based Computational Screening of Fluorinated Oxetane and Tetrahydropyran Solvents for Low-Temperature Sodium Electrolytes* (Yingjie Shan, School of Chemistry, University of St Andrews).
 
 All results are computed (no experiments). The library has 134 methylated and fluorinated ring ethers (23 oxetanes, 111 oxanes).
@@ -47,4 +49,6 @@ MIT (see `LICENSE`).
 
 ## Citation
 
-Please cite the manuscript and the archived release of this repository (DOI to be added after the Zenodo release).
+If you use this code or data, please cite the archived release:
+
+Shan, Y. Code and data for the computational screening of fluorinated oxetane and oxane solvents for sodium electrolytes. Version v1.0.0. Zenodo, 2026. https://doi.org/10.5281/zenodo.24047648
