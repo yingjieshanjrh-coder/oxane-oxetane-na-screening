@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24047648.svg)](https://doi.org/10.5281/zenodo.24047648)
 
-Code and data for the manuscript *Descriptor-Based Computational Screening of Fluorinated Oxetane and Tetrahydropyran Solvents for Low-Temperature Sodium Electrolytes* (Yingjie Shan, independent researcher).
+Code and data for the manuscript *Descriptor-Based Computational Screening of Fluorinated Oxetane and Tetrahydropyran Solvents for Low-Temperature Sodium Electrolytes* (Yingjie Shan, School of Chemistry, University of St Andrews).
 
 All results are computed (no experiments). The library has 134 methylated and fluorinated ring ethers (23 oxetanes, 111 oxanes).
 
