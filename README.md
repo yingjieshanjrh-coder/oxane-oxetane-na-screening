@@ -23,6 +23,7 @@ Installation on Windows (WSL2 + conda): see `SETUP_WSL2.md`.
 | 6. Proton affinity | `compute_pa.py`, `pa_reference.py` (check against NIST) | `pa.csv` |
 | 7. Pareto analysis | `analyze_library.py`, `analyze_final.py`, `extra_analysis.py` | rank tables, summaries |
 | 8. Figures | `make_figures.py --data ../data --out ../figures` | `figures/` |
+| 9. Figures for PCCP and TOC graphic | `make_figures_pccp.py --data ../data --out ../figures_pccp`; `make_toc_graphic.py --data ../data` | TIFF files |
 
 `esp_volume.py` holds the ESPmin/volume routines used by the other scripts.
 
